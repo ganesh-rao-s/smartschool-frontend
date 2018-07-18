@@ -1,2 +1,2 @@
-# smartschool-frontend
-School management app built using React 
+# smartschool
+School Management System application built on React
