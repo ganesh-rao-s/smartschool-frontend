@@ -1,11 +1,6 @@
 import React from "react";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Collapse from "@material-ui/core/Collapse";
-import ExpandLess from "@material-ui/icons/ExpandLess";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-
-
+import { ListItem, ListItemText, Collapse } from "@material-ui/core";
+import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
 class MenuItem extends React.Component {
   state = { open: false };
@@ -15,7 +10,6 @@ class MenuItem extends React.Component {
   };
 
   render() {
-
     let subMenu = [];
     if (this.props.menu.hasOwnProperty("children")) {
       subMenu = this.props.menu.children.map((subMenu, i) => {
@@ -27,7 +21,7 @@ class MenuItem extends React.Component {
 
     return (
       this.props.menu.hasOwnProperty("children") ?
-       <div>
+        <div>
           <ListItem button onClick={this.handleClick}>
             <ListItemText inset primary={this.props.menu.menuName} />
 
@@ -38,7 +32,7 @@ class MenuItem extends React.Component {
           </Collapse>
         </div>
         :
-       <div>
+        <div>
           <ListItem button onClick={this.handleClick} className={this.props.classes.nested}>
             <ListItemText inset primary={this.props.menu.menuName} />
           </ListItem>
@@ -47,5 +41,4 @@ class MenuItem extends React.Component {
   }
 }
 
-
-export default (MenuItem);
+export default MenuItem;

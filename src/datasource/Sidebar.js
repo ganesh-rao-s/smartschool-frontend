@@ -1,4 +1,6 @@
-const data = [
+const data = [{
+    menuName:"Dashboard"
+},
 {
     menuName: "Admin",
     children: [{
