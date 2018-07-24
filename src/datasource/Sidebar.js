@@ -1,23 +1,37 @@
 const data = [{
-    menuName:"Dashboard"
+    menuName: "Dashboard",
+    route: "/",
+    children: [],
 },
 {
     menuName: "Admin",
-    children: [{
-        menuName: "Students",
-    },
-    {
-        menuName: "Parents",
-    }]
+    route: null,
+    children: [
+        {
+            menuName: "List of Values",
+            route: "/lov",
+            children: [],
+
+        }]
 },
 {
     menuName: "Office",
+    route: null,
     children: [
         {
+            menuName: "Students",
+            route: "/students",
+            children: [],
+        },
+        {
             menuName: "Fees",
+            route: null,
+            children: [],
         },
         {
             menuName: "Certificates",
+            route: null,
+            children: [],
         },
     ]
 }]

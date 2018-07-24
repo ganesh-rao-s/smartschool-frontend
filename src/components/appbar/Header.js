@@ -28,13 +28,13 @@ class Header extends React.Component {
                     <IconButton
                         color="inherit"
                         aria-label="Open drawer"
-                        onClick={() => this.props.handleDrawerToggle()}
+                        onClick={this.props.handleDrawerToggle}
                         className={classes.navIconHide}
                     >
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="title" color="inherit" noWrap>
-                        Stewart School, Cuttack
+                        Pragathi Composite School, Sagar
               </Typography>
                 </Toolbar>
             </AppBar>

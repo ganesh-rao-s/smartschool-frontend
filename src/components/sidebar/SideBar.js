@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Hidden, Drawer, Toolbar, Typography, Divider, List } from '@material-ui/core';
 
-import MenuItem from './MenuItem';
+import Item from './Item';
 import { DRAWER_WIDTH } from '../../utils/Constants';
 import data from '../../datasource/Sidebar';
 
@@ -12,18 +12,17 @@ const styles = theme => ({
         [theme.breakpoints.up('md')]: {
             position: 'relative',
         }
-    },
-    nested: {
-        paddingLeft: theme.spacing.unit * 4,
     }
 });
 
 class SideBar extends React.Component {
+
     render() {
         const { classes, theme } = this.props;
-        const list = data.map((menu, i) => {
+
+        const list = data.map((menu, key) => {
             return (
-                <MenuItem menu={menu} classes={this.props.classes} />
+                <Item menu={menu} />
             )
         })
         const drawer = (
@@ -34,7 +33,12 @@ class SideBar extends React.Component {
                   </Typography>
                 </Toolbar>
                 <Divider />
-                <List>{list}</List>
+                <List
+                    component="nav"
+                // subheader={<ListSubheader component="div">Nested List Items</ListSubheader>}
+                >
+                    {list}
+                </List>
             </div>
         );
         return (
@@ -44,7 +48,7 @@ class SideBar extends React.Component {
                         variant="temporary"
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
                         open={this.props.mobileOpen}
-                        onClose={()=>this.props.handleDrawerToggle()}
+                        onClose={this.props.handleDrawerToggle}
                         classes={{
                             paper: classes.drawerPaper,
                         }}
