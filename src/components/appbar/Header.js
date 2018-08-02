@@ -34,7 +34,7 @@ class Header extends React.Component {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="title" color="inherit" noWrap>
-                        Pragathi Composite School, Sagar
+                        St. Xavier’s Collegiate School, Kolkata
               </Typography>
                 </Toolbar>
             </AppBar>

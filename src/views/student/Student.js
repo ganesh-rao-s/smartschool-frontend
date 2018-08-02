@@ -1,17 +1,23 @@
-import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import DataTable from '../../components/table/DataTable';
+import {tableHeader,tableData} from '../../datasource/Student';
 
-import { Typography } from "@material-ui/core";
+const styles = theme => ({
+});
 
-const styles = {
-};
+class Student extends React.Component {
+  render() {
 
-function Student(props) {
-  return (
-    <div>
-      <Typography noWrap>{'List of Students'}</Typography>
-    </div>
-  );
+    return (
+        <DataTable title="List of Students"
+        subTitle = "August 1, 2018"
+        tableHeader={tableHeader}
+        tableData={tableData}
+        />
+      
+    );
+  }
 }
 
 export default withStyles(styles)(Student);
