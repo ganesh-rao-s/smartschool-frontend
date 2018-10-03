@@ -7,19 +7,20 @@ import PageRoutes from '../components/routes/PageRoutes';
 
 const styles = theme => ({
   root: {
+    overflow: 'hidden',
     flexGrow: 1,
     height: '100%',
     zIndex: 1,
-    overflow: 'hidden',
-    position: 'relative',
+    position: 'fixed',
     display: 'flex',
     width: '100%',
   },
   toolbar: theme.mixins.toolbar,
   content: {
+    overflow: 'auto',
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 2,
   }
 });
 
@@ -37,11 +38,11 @@ class ResponsiveDrawer extends React.Component {
       <div className={classes.root}>
         <Header handleDrawerToggle={this.handleDrawerToggle} />
         <SideBar mobileOpen={this.state.mobileOpen} handleDrawerToggle={this.handleDrawerToggle} />
-        <main className={classes.content}>
+        <div className={classes.content}>
           <div className={classes.toolbar} />
           <PageRoutes />
-        </main>
-      </div >
+        </div>
+      </div>
     );
   }
 }

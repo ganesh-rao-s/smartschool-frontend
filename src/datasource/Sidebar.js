@@ -19,21 +19,38 @@ const data = [{
     route: null,
     children: [
         {
-            menuName: "Students",
+            menuName: "Admission",
             route: "/students",
             children: [],
         },
         {
-            menuName: "Fees",
+            menuName: "Teachers",
             route: null,
             children: [],
         },
         {
-            menuName: "Certificates",
+            menuName: "Classes",
             route: null,
             children: [],
         },
     ]
+},
+{
+    menuName: "Helpdesk",
+    route: null,
+    children: [
+        {
+            menuName: "Students Directory",
+            route: null,
+            children: [],
+
+        },
+        {
+            menuName: "Parents Directory",
+            route: null,
+            children: [],
+
+        }]
 }]
 
 export default data;

@@ -12,7 +12,9 @@ const styles = theme => ({
         [theme.breakpoints.up('md')]: {
             position: 'relative',
         }
-    }
+    },
+    toolbar: theme.mixins.toolbar,
+
 });
 
 class SideBar extends React.Component {
@@ -20,7 +22,7 @@ class SideBar extends React.Component {
     render() {
         const { classes, theme } = this.props;
 
-        const list = data.map((menu, key) => {
+        const list = data.map((menu) => {
             return (
                 <Item menu={menu} />
             )
@@ -32,7 +34,7 @@ class SideBar extends React.Component {
                         Smart School
                   </Typography>
                 </Toolbar>
-                <Divider />
+                <Divider /><Divider />
                 <List
                     component="nav"
                 // subheader={<ListSubheader component="div">Nested List Items</ListSubheader>}

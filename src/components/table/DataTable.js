@@ -1,96 +1,128 @@
 import React from 'react';
-import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Card from '@material-ui/core/Card/Card';
-import CardHeader from '@material-ui/core/CardHeader/CardHeader';
+import SimpleTable from '../../components/table/SimpleTable';
+import { Toolbar } from '@material-ui/core';
+import { Input, InputAdornment, Button, Typography } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import SearchIcon from '@material-ui/icons/Search'
 
 const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit / 2,
+        textTransform: 'none',
+    },
+    input: {
+        margin: theme.spacing.unit / 2,
+        marginLeft: "auto",
+        // flex:2
+    },
+    iconSmall: {
+        fontSize: 20,
+        marginRight: theme.spacing.unit / 4,
+    },
+})
 
-  table: {
-    minWidth: 275,
-  },
-  card: {
-    minWidth: 275,
-  },
-});
+class DataTable extends React.Component {
+    state = {
+        order: this.props.order,
+        orderBy: this.props.orderBy,
+    }
 
-class DataTable extends Component {
+    handleRequestSort = (event, property) => {
+        const orderBy = property;
+        let order = 'desc';
 
-  render() {
-    const { classes, title, subTitle, tableData, tableHeader } = this.props;
+        if (this.state.orderBy === property && this.state.order === 'desc') {
+            order = 'asc';
+        }
+        this.setState({ order, orderBy }, () => this.props.onRequestSort(this.state.order, this.state.orderBy));
+    };
 
-    const headerdbKeys = [];
+    handleAddButton = () => {
+        this.props.onAddClicked();
+    }
 
-    const headerRow = tableHeader.map((item, key) => {
-      headerdbKeys.push(item.dbKey)
-      return (
-        item.numeric ?
-          <TableCell numeric component="th" scope="row">
-            {item.label}
-          </TableCell>
-          :
-          <TableCell component="th" scope="row">
-            {item.label}
-          </TableCell>
-      );
-    })
+    handleImportButton = () => {
+        this.props.onImportClicked();
+    }
 
-    const dataRows = tableData.map((item, key) => {
-      return (
-        <TableRow hover>
-          {headerdbKeys.map((key, i) => {
-            return (
-              tableHeader[i].numeric ?
-                <TableCell numeric>
-                  {item[key]}
-                </TableCell>
-                :
-                <TableCell >
-                  {item[key]}
-                </TableCell>
-            )
-          })}
-        </TableRow>
-      );
-    })
+    handleExportButton = () => {
+        this.props.onExportClicked();
+    }
 
+    render() {
+        const { addButton, exportButton, importButton, rowClicked, classes, title, subTitle, tableData, tableHeader } = this.props;
+        const { order, orderBy } = this.state;
+        const toolbar = [<Toolbar >
+            <Typography variant="headline" color="inherit" noWrap >
+                {title}&nbsp;&nbsp;
+        </Typography>
+            {addButton ?
+                <Button variant="outlined" size="small" color="primary" className={classes.button} onClick={this.handleAddButton}>
+                    <AddIcon className={classes.iconSmall} />
+                    Add
+      </Button> : ""}
+            {exportButton ?
+                <Button variant="outlined" size="small" color="primary" className={classes.button} onClick={this.handleExportButton}>
+                    <ArrowUpwardIcon className={classes.iconSmall} />
+                    Export
+      </Button> : ""}
+            {importButton ?
+                <Button variant="outlined" size="small" color="primary" className={classes.button} onClick={this.handleImportButton}>
+                    <ArrowDownwardIcon className={classes.iconSmall} />
+                    Import
+      </Button> : ""}
+            <Input
+                placeholder="Search"
+                className={classes.input}
+                startAdornment={
+                    <InputAdornment position="start">
+                        <SearchIcon className={classes.iconSmall} />
+                    </InputAdornment>
+                }
+            />
+        </Toolbar>]
 
-
-    return (
-      <Card>
-        <CardHeader title={title} subheader={subTitle}>
-        </CardHeader>
-
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow >
-              {headerRow}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {dataRows}
-          </TableBody>
-        </Table>
-      </Card>
-    );
-  }
+        return (
+            <div>
+                <SimpleTable title={title}
+                    subTitle={subTitle}
+                    tableHeader={tableHeader}
+                    tableData={tableData}
+                    order={order}
+                    orderBy={orderBy}
+                    onRequestSort={this.handleRequestSort}
+                    toolbar={toolbar}
+                    rowClicked={rowClicked}
+                />
+            </div>
+        );
+    }
 }
 
 DataTable.propTypes = {
-  classes: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
-  tableData: PropTypes.array.isRequired,
-  tableHeader: PropTypes.array.isRequired
+    classes: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    tableHeader: PropTypes.array.isRequired,
+    tableData: PropTypes.array.isRequired,
+    order: PropTypes.string.isRequired,
+    orderBy: PropTypes.string.isRequired,
+    onRequestSort: PropTypes.func.isRequired,
+    addButton: PropTypes.bool.isRequired,
+    exportButton: PropTypes.bool.isRequired,
+    importButton: PropTypes.bool.isRequired,
+    rowClicked: PropTypes.func,
+    onAddClicked: PropTypes.func,
+    onExportClicked: PropTypes.func,
+    onImportClicked: PropTypes.func,
 };
 
 DataTable.defaultProps = {
-  subTitle: ""
+    isAdd: false,
+    rowClicked: () => { }
 }
 
 export default withStyles(styles)(DataTable);

@@ -6,7 +6,7 @@ import { DRAWER_WIDTH } from '../../utils/Constants';
 
 const styles = theme => ({
     appBar: {
-        position: 'absolute',
+        position: 'fixed',
         marginLeft: DRAWER_WIDTH,
         [theme.breakpoints.up('md')]: {
             width: `calc(100% - ${DRAWER_WIDTH}px)`,
@@ -34,7 +34,7 @@ class Header extends React.Component {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="title" color="inherit" noWrap>
-                        St. Xavier’s Collegiate School, Kolkata
+                        Little Flower High School, Hyderabad
               </Typography>
                 </Toolbar>
             </AppBar>

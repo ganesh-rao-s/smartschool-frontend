@@ -1,14 +1,14 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { tableHeader, tableData } from '../../datasource/Student';
+import { tableHeader, tableData } from '../../datasource/LovDetails';
 import DataTable from '../../components/table/DataTable';
 import SimpleTable from '../../components/table/SimpleTable';
 
 const styles = theme => ({
-  
+
 });
 
-class Student extends React.Component {
+class LovDetails extends React.Component {
 
   handleRequestSort = (order, orderBy) => {
     alert(order + "-" + orderBy)
@@ -28,15 +28,21 @@ class Student extends React.Component {
 
   render() {
 
-    const { classes } = this.props;
+    const newTableDate = []
+    tableData.map((lov) => {
+      if (lov.lovType === this.props.type)
+        newTableDate.push(lov)
+    })
+
+
+    const { classes, type } = this.props;
 
     return (
-      <DataTable title="List of Students"
+      <DataTable title={type}
         subTitle="August 1, 2018"
         tableHeader={tableHeader}
-        tableData={tableData}
-        order="asc"
-        orderBy="name"
+        tableData={newTableDate}
+        order="asc" orderBy="name"
         onRequestSort={this.handleRequestSort}
         addButton={true} exportButton={true} importButton ={true}
         onAddClicked={this.handleAddButton}
@@ -44,14 +50,8 @@ class Student extends React.Component {
         onImportClicked={this.handleImportButton}
       />
 
-      // <SimpleTable title="List of Students"
-      //   subTitle="August 1, 2018"
-      //   tableHeader={tableHeader}
-      //   tableData={tableData}
-      // />
-
     );
   }
 }
 
-export default withStyles(styles)(Student);
+export default withStyles(styles)(LovDetails);

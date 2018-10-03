@@ -7,7 +7,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 
 const styles = theme => ({
     nested: {
-        paddingLeft: theme.spacing.unit * 6,
+        paddingLeft: theme.spacing.unit * 4,
     },
 });
 
