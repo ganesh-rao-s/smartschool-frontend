@@ -20,12 +20,17 @@ const data = [{
     children: [
         {
             menuName: "Admission",
+            route: "/admission",
+            children: [],
+        },
+        {
+            menuName: "Students",
             route: "/students",
             children: [],
         },
         {
             menuName: "Teachers",
-            route: null,
+            route: "/teachers",
             children: [],
         },
         {
@@ -36,7 +41,7 @@ const data = [{
     ]
 },
 {
-    menuName: "Helpdesk",
+    menuName: "Directory",
     route: null,
     children: [
         {
@@ -47,6 +52,48 @@ const data = [{
         },
         {
             menuName: "Parents Directory",
+            route: null,
+            children: [],
+
+        }]
+},{
+    menuName: "Time Table",
+    route: "/timetable",
+    children: []
+},
+{
+    menuName: "Events",
+    route: null,
+    children: []
+},
+{
+    menuName: "Attendance",
+    route: null,
+    children: []
+},
+{
+    menuName: "Marks",
+    route: null,
+    children: []
+},
+{
+    menuName: "Reports",
+    route: null,
+    children: [
+        {
+            menuName: "Admission Count",
+            route: null,
+            children: [],
+
+        },
+        {
+            menuName: "Place of Residence",
+            route: null,
+            children: [],
+
+        },
+        {
+            menuName: "Caste category",
             route: null,
             children: [],
 

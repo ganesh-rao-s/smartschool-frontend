@@ -34,7 +34,7 @@ class Header extends React.Component {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="title" color="inherit" noWrap>
-                        Little Flower High School, Hyderabad
+                        St. Xavier’s Collegiate School, Kolkata
               </Typography>
                 </Toolbar>
             </AppBar>
