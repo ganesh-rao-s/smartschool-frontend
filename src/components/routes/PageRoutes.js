@@ -8,6 +8,8 @@ const Teacher = AsyncFactory(() => import('../../views/teacher/Teacher'));
 const LovMaster = AsyncFactory(() => import('../../views/lov/LovMaster'));
 const Admission = AsyncFactory(() => import('../../views/admission/Admission'));
 const Timetable = AsyncFactory(() => import('../../views/timetable/Timetable'));
+const Attendance = AsyncFactory(() => import('../../views/attendance/Attendance'));
+
 
 class PageRoutes extends Component {
     render() {
@@ -19,6 +21,7 @@ class PageRoutes extends Component {
                 <Route path="/teachers" name="Student" component={Teacher} />
                 <Route path="/admission" name="Student" component={Admission} />
                 <Route path="/timetable" name="Student" component={Timetable} />
+                <Route path="/attendance" name="Attendance" component={Attendance} />
             </Switch>
         )
     }

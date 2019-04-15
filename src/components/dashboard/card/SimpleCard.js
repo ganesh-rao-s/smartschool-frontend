@@ -84,7 +84,7 @@ function SimpleCard(props) {
 SimpleCard.propTypes = {
   classes: PropTypes.object.isRequired,
   header: PropTypes.string,
-  tesxt: PropTypes.string
+  text: PropTypes.string
 };
 
 export default withStyles(styles)(SimpleCard);

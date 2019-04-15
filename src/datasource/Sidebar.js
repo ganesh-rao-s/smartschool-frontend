@@ -68,7 +68,7 @@ const data = [{
 },
 {
     menuName: "Attendance",
-    route: null,
+    route: "/attendance",
     children: []
 },
 {
