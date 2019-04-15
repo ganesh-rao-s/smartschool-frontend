@@ -19,7 +19,7 @@ const styles = theme => ({
   content: {
     overflow: 'auto',
     flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: "#eeeeee",
     padding: theme.spacing.unit * 2,
   }
 });
@@ -39,7 +39,7 @@ class ResponsiveDrawer extends React.Component {
         <Header handleDrawerToggle={this.handleDrawerToggle} />
         <SideBar mobileOpen={this.state.mobileOpen} handleDrawerToggle={this.handleDrawerToggle} />
         <div className={classes.content}>
-          <div className={classes.toolbar} />
+          <div className={classes.toolbar}/>
           <PageRoutes />
         </div>
       </div>

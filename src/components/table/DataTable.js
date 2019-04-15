@@ -7,7 +7,7 @@ import { Input, InputAdornment, Button, Typography } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import SearchIcon from '@material-ui/icons/Search'
+import SearchIcon from '@material-ui/icons/Search';
 
 const styles = theme => ({
     button: {
@@ -84,6 +84,7 @@ class DataTable extends React.Component {
                     </InputAdornment>
                 }
             />
+           
         </Toolbar>]
 
         return (
