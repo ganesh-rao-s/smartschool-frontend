@@ -1,6 +1,9 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import SimpleCheckbox from '../../components/form/SimpleChechbox';
+import SimpleCheckbox from '../../components/form/SimpleCheckbox';
+import GridContainer from "../../components/grid/GridContainer";
+import GridItem from "../../components/grid/GridItem";
+import {data} from "../../datasource/Attendance";
 
 const styles = theme => ({
 
@@ -11,19 +14,18 @@ class Attendance extends React.Component {
   render() {
 
     const { classes } = this.props;
+    const list = data.map((student) => {
+      return (
+    <GridItem xs={12} sm={6} md={3}>
+    <SimpleCheckbox label={student.name} />
+    </GridItem>
+      )
+  })
 
     return (
-      <div>
-        <SimpleCheckbox label="Ganesh Shreedhar" />
-        <SimpleCheckbox label="Chiranjeeb Sahoo" />
-        <SimpleCheckbox label="Joydeep Nayak" />
-        <SimpleCheckbox label="Narendra Kumar" />
-        <SimpleCheckbox label="Dimpul Kumar" />
-        <SimpleCheckbox label="Deeptikanta" />
-        <SimpleCheckbox label="Vishwas Balakrishna" />
-        <SimpleCheckbox label="Rohit Sharma" />
-
-      </div>
+      <GridContainer>
+      {list}
+      </GridContainer>
 
     );
   }

@@ -16,7 +16,6 @@ class SimpleCheckbox extends React.Component {
     render() {
         const { label } = this.props;
         return (
-            <FormGroup row>
                 <FormControlLabel
                     control={
                         <Checkbox
@@ -28,8 +27,6 @@ class SimpleCheckbox extends React.Component {
                     }
                     label={label}
                 />
-            </FormGroup>
-
         );
     }
 }
